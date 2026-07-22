@@ -1,0 +1,6 @@
+{
+  "name": "Bóveda Digital",
+  "description": "Panel de Control y Bóveda Digital Vault con Gestión de VM, Telemetría, Atestación de Seguridad y Orquestador de Clúster Multi-Nodo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,29 @@
+[package]
+name = "vault-windows"
+edition.workspace = true
+version.workspace = true
+
+# Los binarios en src/bin/*.rs (vault-host, vault-runtime) se detectan
+# automáticamente por convención de Cargo, no hace falta declararlos acá.
+
+[dependencies]
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true
+hex.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tiny_http = "0.12"
+qrcode = { version = "0.14", default-features = false, features = ["svg"] }
+vault-core = { path = "../vault-core" }
+vault-crypto = { path = "../vault-crypto" }
+vault-protocol = { path = "../vault-protocol" }
+
+[target.'cfg(windows)'.dependencies]
+windows-service = "0.7"
+windows-sys = { version = "0.52", features = [
+    "Win32_Security_Cryptography",
+    "Win32_Foundation",
+    "Win32_System_Memory"
+] }

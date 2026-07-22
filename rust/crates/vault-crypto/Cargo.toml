@@ -1,0 +1,16 @@
+[package]
+name = "vault-crypto"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+snow.workspace = true
+rand.workspace = true
+hkdf.workspace = true
+sha2.workspace = true
+chacha20poly1305.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+bytes.workspace = true
+hex.workspace = true
+vault-protocol = { path = "../vault-protocol" }

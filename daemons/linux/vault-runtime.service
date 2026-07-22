@@ -1,0 +1,23 @@
+[Unit]
+Description=Confidential Vault Runtime - Core Secure Session Handler
+After=local-fs.target
+
+[Service]
+Type=simple
+User=vault-runtime
+Group=vault-runtime
+ExecStart=/usr/local/bin/vault-runtime
+Restart=always
+RestartSec=5
+
+# Securización extrema, ya que maneja secretos y criptografía
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

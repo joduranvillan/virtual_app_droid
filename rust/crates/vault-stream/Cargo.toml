@@ -1,0 +1,10 @@
+[package]
+name = "vault-stream"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_cbor.workspace = true
+serde_bytes = "0.11"
+thiserror.workspace = true
