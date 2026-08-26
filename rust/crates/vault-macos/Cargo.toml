@@ -26,4 +26,4 @@ vault-crypto = { path = "../vault-crypto" }
 vault-protocol = { path = "../vault-protocol" }
 
 [target.'cfg(target_os = "macos")'.dependencies]
-security-framework = "2.9"
+security-framework = "3.7"

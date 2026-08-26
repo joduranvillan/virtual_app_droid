@@ -26,8 +26,8 @@ vault-crypto = { path = "../vault-crypto" }
 vault-protocol = { path = "../vault-protocol" }
 
 [target.'cfg(windows)'.dependencies]
-windows-service = "0.7"
-windows-sys = { version = "0.52", features = [
+windows-service = "0.8"
+windows-sys = { version = "0.61", features = [
     "Win32_Security_Cryptography",
     "Win32_Foundation",
     "Win32_System_Memory"
