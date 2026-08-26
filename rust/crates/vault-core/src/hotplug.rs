@@ -29,6 +29,12 @@ pub struct VmResourceController {
     current_vram_gb: u32,
 }
 
+impl Default for VmResourceController {
+    fn default() -> Self {
+        Self::new(MIN_VCPU_CORES, MIN_VRAM_GB)
+    }
+}
+
 impl VmResourceController {
     pub fn new(initial_vcpu: u32, initial_vram_gb: u32) -> Self {
         Self {

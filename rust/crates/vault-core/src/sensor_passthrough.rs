@@ -23,6 +23,12 @@ pub struct VirtioInputSensorDispatcher {
     is_active: bool,
 }
 
+impl Default for VirtioInputSensorDispatcher {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl VirtioInputSensorDispatcher {
     pub fn new() -> Self {
         Self {
