@@ -1,0 +1,12 @@
+[package]
+name = "vault-protocol"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_cbor.workspace = true
+serde_json.workspace = true
+serde_bytes = "0.11"
+thiserror.workspace = true
+bytes.workspace = true

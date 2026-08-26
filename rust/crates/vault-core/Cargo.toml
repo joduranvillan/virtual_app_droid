@@ -1,0 +1,13 @@
+[package]
+name = "vault-core"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+serde_cbor.workspace = true
+vault-protocol = { path = "../vault-protocol" }
+vault-crypto = { path = "../vault-crypto" }

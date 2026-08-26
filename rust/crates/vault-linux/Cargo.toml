@@ -1,0 +1,26 @@
+[package]
+name = "vault-linux"
+edition.workspace = true
+version.workspace = true
+
+[[bin]]
+name = "vault-host-linux"
+path = "src/bin/vault-host.rs"
+
+[[bin]]
+name = "vault-runtime-linux"
+path = "src/bin/vault-runtime.rs"
+
+[dependencies]
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true
+hex.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tiny_http = "0.12"
+qrcode = { version = "0.14", default-features = false, features = ["svg"] }
+vault-core = { path = "../vault-core" }
+vault-crypto = { path = "../vault-crypto" }
+vault-protocol = { path = "../vault-protocol" }

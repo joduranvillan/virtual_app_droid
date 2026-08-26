@@ -1,0 +1,24 @@
+[Unit]
+Description=Confidential Vault Host - Zero-Visibility Blind Forwarder (TCP 7443 to Unix Socket)
+After=network.target local-fs.target
+Wants=vault-runtime.service
+
+[Service]
+Type=simple
+User=vault-operator
+Group=vault-operator
+ExecStart=/usr/local/bin/vault-host
+Restart=always
+RestartSec=5
+LimitNOFILE=65536
+
+# Securización y Aislamiento de Procesos (Sandboxing de Systemd)
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
