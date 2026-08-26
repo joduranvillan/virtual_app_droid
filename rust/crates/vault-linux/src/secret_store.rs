@@ -109,7 +109,15 @@ fn persist_secret_file(path: &Path, contents: &[u8]) -> PlatformResult<()> {
 
 #[cfg(unix)]
 fn harden_secret_directory(path: &Path) -> io::Result<()> {
-    fs::set_permissions(path, fs::Permissions::from_mode(0o700))
+    match fs::set_permissions(path, fs::Permissions::from_mode(0o700)) {
+        Ok(()) => Ok(()),
+        Err(e) if e.kind() == io::ErrorKind::PermissionDenied || e.raw_os_error() == Some(1) => {
+            // Si el directorio es un directorio del sistema (e.g. /tmp) y no somos dueños,
+            // no abortar la persistencia del archivo.
+            Ok(())
+        }
+        Err(e) => Err(e),
+    }
 }
 
 #[cfg(unix)]
@@ -132,8 +140,10 @@ mod tests {
     use super::*;
 
     fn temp_path(name: &str) -> PathBuf {
-        std::env::temp_dir().join(format!(
-            "vault_linux_test_{name}_{}_{}",
+        let dir = std::env::temp_dir().join(format!("vault_linux_test_dir_{}", std::process::id()));
+        let _ = fs::create_dir_all(&dir);
+        dir.join(format!(
+            "{name}_{}_{}",
             std::process::id(),
             name.len()
         ))
