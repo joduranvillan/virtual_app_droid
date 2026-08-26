@@ -1,0 +1,60 @@
+version: 2
+updates:
+  # 1. Rust Cargo Dependencies
+  - package-ecosystem: "cargo"
+    directory: "/rust"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore(deps-rust)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "rust"
+    groups:
+      rust-dependencies:
+        patterns:
+          - "*"
+
+  # 2. Android Gradle & Version Catalog Dependencies
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore(deps-gradle)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "android"
+      - "gradle"
+    groups:
+      android-dependencies:
+        patterns:
+          - "androidx.*"
+          - "com.android.*"
+          - "org.jetbrains.kotlin.*"
+
+  # 3. GitHub Actions Workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps-actions)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"
